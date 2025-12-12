@@ -26,8 +26,9 @@ The system was built with qb core and qb inventory in mind but is framework agno
 ```lua
 paper_map = { name = 'paper_map', label = 'Paper Map', weight = 100, type = 'item', image = 'paper_map.png', unique = true, useable = true, shouldClose = false, description = 'A worn paper map. Marked locations can be written on it.' },
 ```
-3. Configure options in `shared/config.lua`  
-4. Start the resource  
+3. add provided ```paper_map``` item image into your inventory scripts html/images folder
+4. Configure options in `shared/config.lua` to your liking
+5. Start the resource
 
 ---
 
