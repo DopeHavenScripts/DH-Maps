@@ -3,11 +3,10 @@ Config = {}
 -- ============================================================================
 -- INVENTORY SETTINGS
 -- ============================================================================
+
 Config.MapItemName = 'paper_map'                    -- Item name that triggers the map
 Config.InventorySystem = 'auto'                     -- 'auto', 'qs-inventory', or 'qb-inventory'
---Item entry for qb-inventory/qs-inventory is in items.lua
---     paper_map = { name = 'paper_map', label = 'Paper Map', weight = 100, type = 'item', image = 'paper_map.png', unique = true, useable = true, shouldClose = false, description = 'A worn paper map. Marked locations can be written on it.' },
--- image is included in script root folder
+
 -- ============================================================================
 -- PAUSE MENU BEHAVIOR
 -- ============================================================================
