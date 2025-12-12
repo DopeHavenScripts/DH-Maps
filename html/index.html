@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DH Maps</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html,body{
+            width:100%;
+            height:100%;
+            background:transparent!important;
+            overflow:hidden;
+            font-family:'Segoe UI',Arial,sans-serif;
+        }
+        .hidden{display:none!important}
+        
+        .controls{
+            position:fixed;
+            bottom:var(--bottom,8.5vh);
+            display:flex;
+            align-items:center;
+            gap:1.5vh;
+            padding:0 1.5vh;
+            height:var(--height,3.5vh);
+            background:var(--bg,rgba(0,0,0,0.78));
+            border-radius:var(--radius,0.3vh);
+            backdrop-filter:blur(var(--blur,2px));
+            box-shadow:0 0.1vh 0 rgba(255,255,255,0.08);
+            pointer-events:none;
+            z-index:999999;
+        }
+        
+        .controls.align-center{left:50%;transform:translateX(-50%)}
+        .controls.align-left{left:var(--margin,2.5vh);transform:none}
+        .controls.align-right{right:var(--margin,2.5vh);left:auto;transform:none}
+        
+        .title{
+            font-size:var(--font,1.5vh);
+            font-weight:600;
+            text-transform:uppercase;
+            letter-spacing:0.1vh;
+            color:var(--dim,rgba(255,255,255,0.75));
+            padding-right:0.8vh;
+            border-right:1px solid rgba(255,255,255,0.15);
+        }
+        
+        .group{display:flex;align-items:center;gap:0.8vh;white-space:nowrap}
+        
+        .label{
+            font-size:var(--font,1.5vh);
+            text-transform:uppercase;
+            letter-spacing:0.05vh;
+            color:var(--text,rgba(255,255,255,0.92));
+        }
+        
+        .key{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            min-width:2.4vh;
+            height:1.85vh;
+            padding:0 0.75vh;
+            background:var(--key-bg,rgba(255,255,255,0.95));
+            color:var(--key-text,rgba(0,0,0,0.92));
+            border:1px solid var(--key-border,rgba(0,0,0,0.35));
+            border-radius:0.2vh;
+            font-size:var(--key-font,1.3vh);
+            font-weight:700;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls" class="controls hidden"></div>
+    <script>
+        (function(w,d){
+            const el=d.getElementById('controls');
+            
+            const applyConfig=(cfg)=>{
+                if(!cfg)return;
+                el.style.setProperty('--bottom',(cfg.bottomOffset||8.5)+'vh');
+                el.style.setProperty('--height',(cfg.barHeight||3.5)+'vh');
+                el.style.setProperty('--radius',(cfg.barRadius||0.3)+'vh');
+                el.style.setProperty('--bg',cfg.barBackground||'rgba(0,0,0,0.78)');
+                el.style.setProperty('--blur',(cfg.barBlur||2)+'px');
+                el.style.setProperty('--text',cfg.textColor||'rgba(255,255,255,0.92)');
+                el.style.setProperty('--dim',cfg.textColorDim||'rgba(255,255,255,0.75)');
+                el.style.setProperty('--key-bg',cfg.keyBackground||'rgba(255,255,255,0.95)');
+                el.style.setProperty('--key-text',cfg.keyTextColor||'rgba(0,0,0,0.92)');
+                el.style.setProperty('--key-border',cfg.keyBorderColor||'rgba(0,0,0,0.35)');
+                el.style.setProperty('--font',(cfg.fontSize||1.5)+'vh');
+                el.style.setProperty('--key-font',(cfg.keyFontSize||1.3)+'vh');
+                el.style.setProperty('--margin',(cfg.sideMargin||2.5)+'vh');
+                
+                el.classList.remove('align-center','align-left','align-right');
+                el.classList.add('align-'+(cfg.align||'center'));
+            };
+            
+            const render=(title,items)=>{
+                el.innerHTML='<span class="title">'+(title||'DH MAPS')+'</span>'+
+                    (items||[]).map(i=>'<div class="group"><span class="label">'+(i.label||'')+'</span><span class="key">'+(i.key||'')+'</span></div>').join('');
+            };
+            
+            w.addEventListener('message',e=>{
+                const data=e.data||{};
+                if(data.type!=='dhmaps:controls')return;
+                
+                if(data.show){
+                    applyConfig(data.config);
+                    render(data.config?.title,data.items);
+                    el.classList.remove('hidden');
+                }else{
+                    el.classList.add('hidden');
+                }
+            });
+            
+            el.classList.add('hidden');
+        })(window,document);
+    </script>
+</body>
+</html>
