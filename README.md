@@ -157,6 +157,14 @@ This includes marker limits, UI behavior, animation options, and pause menu rest
 
 ---
 
+## Gallery
+
+<img width="1920" height="1080" alt="Desktop Screenshot 2025 12 12 - 05 01 42 50" src="https://github.com/user-attachments/assets/0113abd5-008b-4122-bd85-c03b8f6c6242" />
+<img width="1920" height="1080" alt="Desktop Screenshot 2025 12 12 - 05 01 27 70" src="https://github.com/user-attachments/assets/5bd524cb-216b-4347-998f-4989f39d4fb8" />
+<img width="1920" height="1080" alt="Desktop Screenshot 2025 12 12 - 05 00 59 97" src="https://github.com/user-attachments/assets/42e15168-3f26-44e3-899c-3c41cce5eae7" />
+<img width="1920" height="1080" alt="Desktop Screenshot 2025 12 12 - 05 00 54 98" src="https://github.com/user-attachments/assets/896b5a85-fa1a-4d0b-98cd-0602b88e22aa" />
+
+
 ## Support
 
 This resource is intended for intermediate server owners and developers.  
