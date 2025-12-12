@@ -23,6 +23,9 @@ The system was built with qb core and qb inventory in mind but is framework agno
 
 1. Place the resource in your server resources folder  
 2. Add a usable map item to your inventory system  
+```lua
+paper_map = { name = 'paper_map', label = 'Paper Map', weight = 100, type = 'item', image = 'paper_map.png', unique = true, useable = true, shouldClose = false, description = 'A worn paper map. Marked locations can be written on it.' },
+```
 3. Configure options in `shared/config.lua`  
 4. Start the resource  
 
